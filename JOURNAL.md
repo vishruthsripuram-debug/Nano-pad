@@ -32,7 +32,7 @@ After a while of trial and error i eventually figured it out and was able to pro
 
 # 5/1/2026 - CAD design
 
-**Time spent:** 3.5h
+**Time spent:** 4.5h
 
 I designed the PCB case in Fusion 360
 
@@ -61,7 +61,7 @@ I also have to design the top shell of the case similar to the Prota design case
 
 # 5/1/2026 - More fusion - Designing lid and adding keycaps
 
-**Time spent:** 3h
+**Time spent:** 3.5h
 
 In the previous journal entry i said that i would complete the Lid and add the USB charging port and thats what i did.
 
@@ -73,7 +73,7 @@ I designed the lid simply by just creating a sketch on top of the base and creat
 
 # 5/1/2026 - I developed the code and editing software for the macropad
 
-**Time spent:** 4.5h
+**Time spent:** 5h
 
 I coded the app for editing the macro pad there are multiple options for holding, double clicking and single pressing, there are also sliders to update these settings.
 
