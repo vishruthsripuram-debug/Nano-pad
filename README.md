@@ -23,3 +23,7 @@ I wanted the project to be simple and easily accessible and customisable by many
 ## Collaboration
 In collaboration with PCBWay
 <img width="2500" height="860" alt="image" src="https://github.com/user-attachments/assets/535d4313-0928-4a1c-ba73-91cac2d6da16" />
+
+ ## Schematic and PCB images
+ <img width="417" height="658" alt="Screenshot 2026-09-15 at 11 06 41 AM" src="https://github.com/user-attachments/assets/1df46572-4710-4aa7-a7d8-e131ff9e807e" />
+<img width="358" height="389" alt="Screenshot 2026-09-15 at 11 06 30 AM" src="https://github.com/user-attachments/assets/36d4f93e-4843-4420-9e06-77fce34c9ceb" />
