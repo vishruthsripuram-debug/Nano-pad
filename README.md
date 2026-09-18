@@ -11,11 +11,12 @@ I wanted the project to be simple and easily accessible and customisable by many
 
 ## Bill of Materials — Macro Pad
 
-| Item # | Designator | Qty | Manufacturer | Mfg Part # | Description / Value | Package/Footprint | Type | Notes |
-|---|---|---|---|---|---|---|---|---|
-| 1 | SW1, SW2, SW3, SW4 | 4 | Cherry (preferred) | MX1A-G1NW | MX Brown, tactile, PCB mount, 5-pin | SW_Cherry_MX_1.00u_PCB | THT | If out of stock, substitute OK: any 5-pin PCB-mount MX-compatible Brown tactile switch (e.g. Gateron KS-3 Brown, Kailh Box/MX Brown, Outemu Brown) — all fit this footprint |
-| 2 | U1 | 1 | DFRobot | DFR0648 | Fermion 0.91" 128x32 SSD1306 OLED, I2C, top-mounted pin header (OLED-B) | Module, pin header, THT | THT | Pins are on the short top edge, NOT the long side — confirm this exact pinout before substituting |
-| 3 | U2 | 1 | Seeed Studio | 101991470 | XIAO ESP32-C6 module (Tape and Reel, SMD variant) | SMD castellated module | SMD | — |
+
+| Item # | Designator | Qty | Manufacturer | Mfg Part # | Description / Value | Package/Footprint | Type | Price Range (AUD / Unit) | Verified Store Links | Notes |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **1** | SW1, SW2, SW3, SW4 | 4 | Cherry | MX1A-G1NW | MX Brown, tactile, PCB mount, 5-pin | SW_Cherry_MX_1.00u_PCB | THT | \$0.40 – \$0.88 | [Cafege](https://cafege.com.au "Cherry MX1A-G1NW") <br> [NetNest](https://netnest.com.au "NetNest MX1A-G1NW") <br> [Robot Gear](https://robotgear.com.au "Robot Gear Cherry MX2A Brown") | Sold in packs or individually. Newer MX2A variants are drop-in compatible 5-pin tactile substitutes if the hyperglide variant lacks stock. |
+| **2** | U1 | 1 | DFRobot | DFR0648 | Fermion 0.91" 128x32 SSD1306 OLED, I2C, top-mounted pin header (OLED-B) | Module, pin header, THT | THT | \$9.90 – \$14.50 | [DFRobot Official](https://dfrobot.com "DFRobot DFR0648") <br> [DigiKey](https://digikey.com "DigiKey DFR0648") <br> [Element14 AU](https://element14.com "Element14 DFR0648") | **Double-check pinout prior to soldering**: ensure pins sit on the short top border. |
+| **3** | U2 | 1 | Seeed Studio | 101991470 | XIAO ESP32-C6 module (Tape and Reel, SMD variant) | SMD castellated module | SMD | \$12.08 – \$15.50 | [Pakronics](https://pakronics.com.au "Pakronics Seeed 101991470") <br> [Seeed Studio](https://seeedstudio.com "Seeed Studio 101991470") <br> [RobotShop](https://robotshop.com "RobotShop Seeed 101991470") | Specifically the tape-and-reel edition designed for automated SMT layout without any pre-attached pins. |
 
 ## Software
 <img width="1171" height="697" alt="software" src="https://github.com/user-attachments/assets/c2d497b5-6434-459d-b071-70ca37bc7aba" />
