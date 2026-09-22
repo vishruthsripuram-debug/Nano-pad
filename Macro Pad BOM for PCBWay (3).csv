@@ -1,4 +1,0 @@
-Item #,*Designator,*Qty,Manufacturer,*Mfg Part #,Description / Value,*Package/Footprint,Type,Your Instructions / Notes
-1,"SW1,SW2,SW3,SW4",4,Cherry (preferred),MX1A-G1NW,"MX Brown, tactile, PCB mount, 5-pin",SW_Cherry_MX_1.00u_PCB,THT,"If out of stock, substitute OK: any 5-pin PCB-mount MX-compatible Brown tactile switch (e.g. Gateron KS-3 Brown, Kailh Box/MX Brown, Outemu Brown) - all fit this footprint"
-2,U1,1,DFRobot,DFR0648,"Fermion 0.91"" 128x32 SSD1306 OLED, I2C, top-mounted pin header (OLED-B)","Module, pin header, THT",THT,"Pins are on the short top edge, NOT the long side - confirm this exact pinout before substituting"
-3,U2,1,Seeed Studio,101991470,"XIAO ESP32-C6 module (Tape and Reel, SMD variant)",SMD castellated module,SMD,
