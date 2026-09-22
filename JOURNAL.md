@@ -73,7 +73,7 @@ I designed the lid simply by just creating a sketch on top of the base and creat
 
 # 5/1/2026 - I developed the code and editing software for the macropad
 
-**Time spent:** 5h
+**Time spent:** 2.5h
 
 I coded the app for editing the macro pad there are multiple options for holding, double clicking and single pressing, there are also sliders to update these settings.
 
