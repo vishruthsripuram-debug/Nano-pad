@@ -51,8 +51,9 @@ Any keyboard/HID library
 6. Youre all done :)
 
 ## Schematic and PCB images
- <img width="417" height="658" alt="Screenshot 2026-09-15 at 11 06 41 AM" src="https://github.com/user-attachments/assets/1df46572-4710-4aa7-a7d8-e131ff9e807e" />
-<img width="358" height="389" alt="Screenshot 2026-09-15 at 11 06 30 AM" src="https://github.com/user-attachments/assets/36d4f93e-4843-4420-9e06-77fce34c9ceb" />
+<img width="417" height="658" alt="Screenshot 2026-09-15 at 11 06 41 AM" src="https://github.com/user-attachments/assets/1df46572-4710-4aa7-a7d8-e131ff9e807e" />
+![Uploading Screenshot 2026-10-01 at 4.27.06 PM.png…]()
+
 
 ## Collaboration
 In collaboration with PCBWay
