@@ -56,7 +56,10 @@ Any keyboard/HID library
 
 
 
-## Collaboration
+## Credits
 In collaboration with PCBWay
 <img width="2500" height="860" alt="image" src="https://github.com/user-attachments/assets/535d4313-0928-4a1c-ba73-91cac2d6da16" />
 **PCBWay has financially sponsored the project by providin the parts and assembly free of cost**
+
+The keycaps used in this project are the simple cherry mx keycaps by 3dnerdcave on printables
+https://www.printables.com/model/118708-simple-cherry-mx-keycap/files
