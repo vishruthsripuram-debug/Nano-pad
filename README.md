@@ -52,7 +52,8 @@ Any keyboard/HID library
 
 ## Schematic and PCB images
 <img width="417" height="658" alt="Screenshot 2026-09-15 at 11 06 41 AM" src="https://github.com/user-attachments/assets/1df46572-4710-4aa7-a7d8-e131ff9e807e" />
-![Uploading Screenshot 2026-10-01 at 4.27.06 PM.png…]()
+<img width="686" height="442" alt="image" src="https://github.com/user-attachments/assets/83a4f3b8-4cd0-4035-b739-ddac2e9adbed" />
+
 
 
 ## Collaboration
