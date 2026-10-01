@@ -73,7 +73,6 @@ I designed the lid simply by just creating a sketch on top of the base and creat
 
 # 5/1/2026 - I developed the code and editing software for the macropad
 
-**Time spent:** 2.5h
 
 I coded the app for editing the macro pad there are multiple options for holding, double clicking and single pressing, there are also sliders to update these settings.
 
@@ -93,5 +92,7 @@ I used CSS for the styles, JS and HTML.
 
 The configurator includes a live preview of the OLED inside the SVG macropad.
 
-![Screenshot 2026-05-01 at 2.20.29 pm](https://stasis.hackclub-assets.com/images/1777609231818-z7pnq7.png)
+<img width="2844" height="1508" alt="image" src="https://github.com/user-attachments/assets/ba5902d3-3608-4829-9944-5a9d7c6a20ac" />
 
+
+**Time spent:** 2.5h
