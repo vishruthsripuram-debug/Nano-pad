@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Nano Pad Config</title>
+<style>
+:root{--m:#666;--g:#22c55e;--r:#ff4b4b}
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:#e5e5e5;font:13px system-ui,sans-serif;padding:16px}
+.shell{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1.3fr;gap:16px}
+@media(max-width:800px){.shell{grid-template-columns:1fr}}
+h1{margin:0;font-size:20px;text-transform:uppercase;letter-spacing:.06em}
+.sub{font-size:11px;color:var(--m);text-transform:uppercase;letter-spacing:.16em;margin:4px 0 12px}
+.panel{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:16px;padding:14px;margin-bottom:14px}
+.ph{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--m);margin-bottom:6px}
+label{font-size:11px;color:var(--m);display:block;margin:8px 0 4px}
+select,input[type=text]{width:100%;background:#0d0d0d;border:1px solid #222;border-radius:999px;color:#e5e5e5;padding:6px 10px;font-size:12px;margin-top:4px}
+input[type=range]{width:100%}
+button{border:0;cursor:pointer;padding:8px 14px;border-radius:999px;background:#f5f5f5;color:#000;font-size:13px;margin-top:10px}
+button.s{background:#151515;color:#e5e5e5;border:1px solid #262626}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.blk{background:#111;border:1px solid #202020;border-radius:12px;padding:10px;margin-bottom:10px}
+.blk b{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--m)}
+canvas{width:256px;height:64px;image-rendering:pixelated;background:#000;border:1px solid #333;display:block;margin-top:10px}
+.dz{border:2px dashed #333;border-radius:12px;padding:16px;text-align:center;color:var(--m);cursor:pointer}
+#st{color:var(--m);margin-top:6px}.ok{color:var(--g)!important}.er{color:var(--r)!important}
+.hide{display:none}
+</style></head><body>
+<div class="shell">
+ <div>
+  <h1>Nano Pad Config</h1>
+  <div class="sub">4 keys · 128x32 OLED · BLE keyboard</div>
+  <button id="conn" style="margin:0 0 6px">Connect</button>
+  <div id="st">Not connected</div>
+  <div id="ble" style="font-size:12px;color:var(--m);margin-top:4px">Bluetooth: -</div>
+
+  <div class="panel" style="margin-top:14px">
+   <div class="ph">Screen</div>
+   <select id="mode">
+    <option value="IDLE">Default (logo + BLE status)</option>
+    <option value="TEXT">Custom text</option>
+    <option value="IMG">Image</option>
+    <option value="PET">Virtual pet</option>
+   </select>
+   <div id="tBox" class="hide"><input type="text" id="txt" placeholder="e.g. VISHRUTH"></div>
+   <div id="iBox" class="hide"><label>&nbsp;</label><div class="dz" id="dz">Drop PNG/JPG or click</div><input type="file" id="file" accept="image/*" class="hide"></div>
+   <div id="pBox" class="hide">
+    <div class="g3">
+     <div><label>Pet</label><select id="pt"><option value="blob">Blob</option><option value="cat">Cat</option><option value="ghost">Ghost</option></select></div>
+     <div><label>Hunger <span id="prv">5</span></label><input type="range" id="pr" min="1" max="10" value="5"></div>
+     <div><label>Sleep <span id="psv">20</span>s</label><input type="range" id="ps" min="5" max="60" value="20"></div>
+    </div>
+    <button id="feed" class="s">Feed</button> <button id="reset" class="s">Reset</button>
+   </div>
+   <canvas id="cv" width="128" height="32"></canvas>
+   <button id="apply">Apply to screen</button>
+  </div>
+
+  <div class="panel">
+   <div class="ph">Timing</div>
+   <label>Computer</label><select id="os"><option value="mac">Mac (Cmd)</option><option value="win">Windows (Ctrl)</option></select>
+   <label>Hold time: <span id="hv">500</span> ms</label><input type="range" id="hs" min="100" max="2000" value="500">
+   <label>Double-press window: <span id="dv">250</span> ms</label><input type="range" id="ds" min="100" max="600" value="250">
+  </div>
+ </div>
+
+ <div>
+  <div class="panel"><div class="ph">Button assignments</div><div id="btns"></div>
+   <div style="font-size:11px;color:var(--m)">Custom: <code>CTRL+SHIFT+ESC</code>, <code>GUI+L</code>, <code>F5</code>, <code>PLAYPAUSE</code>, <code>VOLUP</code>, or <code>TYPE:any text</code>. Leave a slot at "—" to clear it.</div>
+   <button class="s" id="dumpBtn">Show stored macros</button><pre id="log" style="font-size:11px;color:#888;white-space:pre-wrap;max-height:160px;overflow:auto">Log (> sent, < device reply)</pre><pre id="dump" style="font-size:11px;color:var(--m);white-space:pre-wrap"></pre>
+  </div>
+ </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const P=[["—",""],["Close tab","MOD+W"],["New tab","MOD+T"],["Reopen tab","MOD+SHIFT+T"],["Switch window","SWITCH"],
+["Copy","MOD+C"],["Paste","MOD+V"],["Undo","MOD+Z"],["Screenshot","SHOT"],["Lock","LOCK"],
+["Play/Pause","PLAYPAUSE"],["Next track","NEXT"],["Prev track","PREV"],["Volume up","VOLUP"],["Volume down","VOLDOWN"],["Mute","MUTE"],
+["Feed pet","PET FEED"],["Custom…","CUSTOM"]];
+function res(v){const m=$('os').value==='mac';
+ if(v==='SWITCH')return m?'GUI+TAB':'ALT+TAB';
+ if(v==='SHOT')return m?'GUI+SHIFT+4':'GUI+SHIFT+S';
+ if(v==='LOCK')return m?'CTRL+GUI+Q':'GUI+L';
+ return v.replace(/^MOD\+/,m?'GUI+':'CTRL+')}
+const opts=P.map(([n,v])=>`<option value="${v}">${n}</option>`).join('');
+$('btns').innerHTML=[1,2,3,4].map(n=>`<div class="blk"><b>Button ${n}</b><div class="g3">`+
+ [['s','Single'],['h','Hold'],['d','Double']].map(([k,l])=>`<div><label>${l}</label><select id="${k}${n}" data-t="${k}t${n}">${opts}</select><input type="text" id="${k}t${n}" class="hide" placeholder="Custom"></div>`).join('')+
+ `</div><button data-n="${n}">Apply</button> <button class="s" data-t="${n}">Test single</button></div>`).join('');
+document.querySelectorAll('select[data-t]').forEach(s=>s.onchange=()=>$(s.dataset.t).classList.toggle('hide',s.value!=='CUSTOM'));
+document.querySelectorAll('button[data-t]').forEach(b=>b.onclick=()=>{const n=b.dataset.t,v=val('s'+n,'st'+n);if(v!=='NONE')send('TEST '+v)});
+document.querySelectorAll('button[data-n]').forEach(b=>b.onclick=()=>applyBtn(b.dataset.n));
+
+function st(t,c){const e=$('st');e.textContent=t;e.className=c||''}
+let port,writer;
+let poll;
+$('conn').onclick=async()=>{
+ try{
+  port=await navigator.serial.requestPort();await port.open({baudRate:115200});
+  writer=port.writable.getWriter();const reader=port.readable.getReader();st('Connected','ok');
+  let buf='';
+  (async()=>{const d=new TextDecoder();for(;;){const{value,done}=await reader.read();if(done)break;
+   buf+=d.decode(value);let i;
+   while((i=buf.indexOf('\n'))>=0){const l=buf.slice(0,i).trim();buf=buf.slice(i+1);if(l&&l!=='BLE=0'&&l!=='BLE=1')log('< '+l);
+    if(l.startsWith('BLE='))$('ble').textContent=l.startsWith('BLE=1')?'Bluetooth: connected':'Bluetooth: NOT connected - pair "Nano Pad" in system Bluetooth settings';
+    else if(l==='OK')st('Saved to device','ok');
+    else if(l==='ERR')st('Device rejected command','er');
+    else if(/^B\d S=/.test(l))$('dump').textContent+=l+'\n'}}})();
+  send('STATUS');clearInterval(poll);poll=setInterval(()=>send('STATUS'),3000);
+ }catch(e){st('Connection failed: '+(e.name||'')+' '+(e.message||''),'er')}
+};
+function log(t){const e=$('log');e.textContent=(t+'\n'+e.textContent).slice(0,3000)}
+async function send(l){if(!writer){st('Not connected','er');return false}
+ try{if(l!=='STATUS')log('> '+l.slice(0,70));
+  await writer.write(new TextEncoder().encode(l+'\n'));await new Promise(r=>setTimeout(r,40));return true}
+ catch(e){st('Write failed: '+e.message,'er');return false}}
+const val=(s,t)=>{const v=$(s).value;return v==='CUSTOM'?($(t).value.trim()||'NONE'):(res(v)||'NONE')};
+
+async function applyBtn(n){
+ await send(`SET ${n} SINGLE ${val('s'+n,'st'+n)}`);
+ await send(`SET ${n} HOLD ${val('h'+n,'ht'+n)} ${$('hs').value}`);
+ await send(`SET ${n} DOUBLE ${val('d'+n,'dt'+n)} ${$('ds').value}`);
+ $('dump').textContent='';await send('DUMP');
+}
+$('hs').oninput=()=>$('hv').textContent=$('hs').value;
+$('ds').oninput=()=>$('dv').textContent=$('ds').value;
+$('pr').oninput=()=>$('prv').textContent=$('pr').value;
+$('ps').oninput=()=>{$('psv').textContent=$('ps').value};
+
+// ----- screen -----
+const cv=$('cv'),cx=cv.getContext('2d');
+function clear(){cx.fillStyle='#000';cx.fillRect(0,0,128,32);cx.fillStyle='#fff'}
+function pet(happy){clear();const t=$('pt').value,x=52,y=10,f=(a,b,c,d)=>cx.fillRect(a,b,c,d);
+ if(t==='cat'){f(x,y+4,24,12);f(x+2,y,6,6);f(x+16,y,6,6)}
+ else if(t==='ghost'){f(x,y,24,16);for(let i=0;i<4;i++)f(x+i*6,y+16,4,4)}
+ else{f(x,y+2,24,14);f(x+4,y,16,4)}
+ cx.fillStyle='#000';f(x+6,y+6,3,3);f(x+15,y+6,3,3);if(happy)f(x+8,y+12,8,1)}
+function text(){clear();const t=$('txt').value||'';cx.font=(t.length<=10?'bold 16px':'10px')+' monospace';cx.textBaseline='middle';cx.fillText(t,0,16)}
+function show(){const m=$('mode').value;
+ $('tBox').classList.toggle('hide',m!=='TEXT');$('iBox').classList.toggle('hide',m!=='IMG');$('pBox').classList.toggle('hide',m!=='PET');
+ if(m==='TEXT')text();if(m==='PET')pet();if(m==='IDLE'){clear();cx.font='bold 16px monospace';cx.textBaseline='top';cx.fillText('NANO PAD',0,0)}}
+$('mode').onchange=show;$('txt').oninput=text;$('pt').onchange=()=>pet();
+$('dz').onclick=()=>$('file').click();
+$('dz').ondragover=e=>e.preventDefault();
+$('dz').ondrop=e=>{e.preventDefault();loadImg(e.dataTransfer.files[0])};
+$('file').onchange=e=>loadImg(e.target.files[0]);
+function loadImg(f){if(!f)return;const im=new Image();im.onload=()=>{
+ clear();const s=Math.min(128/im.width,32/im.height),w=im.width*s,h=im.height*s;
+ cx.drawImage(im,(128-w)/2,(32-h)/2,w,h);
+ const d=cx.getImageData(0,0,128,32);
+ for(let i=0;i<d.data.length;i+=4){const v=(d.data[i]+d.data[i+1]+d.data[i+2])/3>128?255:0;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}
+ cx.putImageData(d,0,0)};im.src=URL.createObjectURL(f)}
+$('apply').onclick=async()=>{
+ const m=$('mode').value;
+ if(m==='IDLE')await send('SCREEN IDLE');
+ if(m==='TEXT'){const t=$('txt').value.trim();if(!t)return st('Enter text','er');await send(`SCREEN TEXT "${t.replace(/"/g,"'")}"`)}
+ if(m==='IMG'){const d=cx.getImageData(0,0,128,32).data;let b='';for(let i=0;i<d.length;i+=4)b+=d[i]>128?'1':'0';await send('SCREEN IMG '+b)}
+ if(m==='PET'){await send('PET TYPE '+$('pt').value);await send('PET HUNGER_RATE '+$('pr').value);await send('PET SLEEP_TIME '+$('ps').value);await send('SCREEN PET ENABLE')}
+};
+$('feed').onclick=()=>{pet(true);setTimeout(()=>pet(),800);send('PET FEED')};
+$('reset').onclick=()=>{pet();send('PET RESET')};
+$('dumpBtn').onclick=()=>{$('dump').textContent='';send('DUMP')};
+show();
+</script></body></html>
