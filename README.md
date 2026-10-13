@@ -54,6 +54,10 @@ Any keyboard/HID library
 <img width="417" height="658" alt="Screenshot 2026-09-15 at 11 06 41 AM" src="https://github.com/user-attachments/assets/1df46572-4710-4aa7-a7d8-e131ff9e807e" />
 <img width="686" height="442" alt="image" src="https://github.com/user-attachments/assets/83a4f3b8-4cd0-4035-b739-ddac2e9adbed" />
 
+## Device images
+<img width="4032" height="3024" alt="IMG_4889" src="https://github.com/user-attachments/assets/61af93a4-0cf8-4b1c-8d66-70e51410d232" />
+<img width="4032" height="3024" alt="IMG_4890" src="https://github.com/user-attachments/assets/a9ebc1e8-b2ae-429e-ae32-f85e04df1d8c" />
+<img width="5712" height="4284" alt="IMG_4888" src="https://github.com/user-attachments/assets/fe687be3-8442-44e3-be45-4a7d9885c123" />
 
 
 ## Credits
