@@ -44,7 +44,7 @@ Any keyboard/HID library
 
 ### Setup
 1. Downlaod and open the html file
-2. connect your board
+2. connect your board through bluetooth settings on your laptop
 3. select the desired functions for your macropad
 4. save and uppload
 5. exit
