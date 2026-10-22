@@ -9,15 +9,14 @@ I wanted the project to be simple and easily accessible and customisable by many
 
 **The design is completely original and simply takes some inspiration fro the prota designs macropad**
 
-## Bill of Materials — Macro Pad
+## Bill of Materials
 
-| Item # | Designator | Qty | Manufacturer | Mfg Part # | Description / Value | Package/Footprint | Type | Price Range (AUD / Unit) | Verified Store Links | Notes |
-|---|---|---|---|---|---|---|---|---|---|---|
-| **1** | SW1, SW2, SW3, SW4 | 4 | Cherry | MX1A-G1NW | MX Brown, tactile, PCB mount, 5-pin | SW_Cherry_MX_1.00u_PCB | THT | $0.40 – $0.88 | [Cafege](https://cafege.com.au "Cherry MX1A-G1NW") <br> [NetNest](https://netnest.com.au "NetNest MX1A-G1NW") <br> [Robot Gear](https://robotgear.com.au "Robot Gear Cherry MX2A Brown") | Sold in packs or individually. Newer MX2A variants are drop-in compatible 5-pin tactile substitutes if the hyperglide variant lacks stock. |
-| **2** | U1 | 1 | DFRobot | DFR0648 | Fermion 0.91" 128x32 SSD1306 OLED, I2C, top-mounted pin header (OLED-B) | Module, pin header, THT | THT | $9.90 – $14.50 | [DFRobot Official](https://dfrobot.com "DFRobot DFR0648") <br> [DigiKey](https://digikey.com "DigiKey DFR0648") <br> [Element14 AU](https://element14.com "Element14 DFR0648") | **Double-check pinout prior to soldering**: ensure pins sit on the short top border. |
-| **3** | U2 | 1 | Seeed Studio | 101991470 | XIAO ESP32-C6 module (Tape and Reel, SMD variant) | SMD castellated module | SMD | $12.08 – $15.50 | [Pakronics](https://pakronics.com.au "Pakronics Seeed 101991470") <br> [Seeed Studio](https://seeedstudio.com "Seeed Studio 101991470") <br> [RobotShop](https://robotshop.com "RobotShop Seeed 101991470") | Specifically the tape-and-reel edition designed for automated SMT layout without any pre-attached pins. |
-| **4** | PCB1 | 1 | Custom | N/A | Main Board PCB | Custom | Board | $1.80 | N/A | Cost per individual board based on production run. |
-
+| # | Designator | Qty | Part # | Description | Price | Links | Notes |
+|---|---|---|---|---|---|---|---|
+| 1 | SW1–SW4 | 4 | Cherry MX1A-G1NW | MX Brown, tactile, PCB mount, 5-pin | n/a | [Little Bird (MX Brown)](https://littlebirdelectronics.com.au/products/cherry-mx-switch-brown) · [Little Bird (MX2A Brown)](https://littlebirdelectronics.com.au/products/cherry-mx2a-keyswitch-brown) · [MechanicalKeyboards.com](https://mechanicalkeyboards.com/products/cherry-mx-brown-hyperglide-45g-tactile) | MX2A is a drop-in substitute. Little Bird's page doesn't list the exact part number, so confirm it before ordering. |
+| 2 | U1 | 1 | DFRobot DFR0648 | 0.91" 128x32 SSD1306 OLED, I2C | US$9.90 / A$13.84 ex GST | [DFRobot](https://dfrobot.com/product-2018.html) · [Element14 AU](https://au.element14.com/dfrobot/dfr0648/oled-display-module-0-91-128x32/dp/4308185) | Check the pinout before soldering. Element14 AU may be out of stock. |
+| 3 | U2 | 1 | Seeed 101991470 | XIAO ESP32-C6, Tape & Reel (SMD) | US$6.54 | [RobotShop (T&R)](https://www.robotshop.com/es/products/placa-seeedstudio-seeed-studio-xiao-esp32-c6-tape-reel) · [Core Electronics (AU)](https://core-electronics.com.au/catalog/product/view/sku/SS113991254) · [Pakronics (AU)](https://www.pakronics.com.au/products/seeed-studio-xiao-esp32c6-ss113991254) | The AU stores sell the standard part, 113991254, for A$12.80. Only RobotShop lists the T&R variant. |
+| 4 | PCB1 | 1 | Custom | Main board PCB | $1.80 | n/a | Per-board cost for the production run. |
 
 ## Software
 <img width="1171" height="697" alt="software" src="https://github.com/user-attachments/assets/c2d497b5-6434-459d-b071-70ca37bc7aba" />
